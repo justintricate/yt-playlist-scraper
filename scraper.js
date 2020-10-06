@@ -31,7 +31,8 @@ async function scrapePage(url) {
         const elem = elements[i];
         const href = await page.evaluate(e => e.href, elem); //Chrome will return the absolute URL
         const newPage = await browser.newPage();
-        // block stuff???
+    
+        //Following lines block media to speed up scrape
         await newPage.setRequestInterception(true);
 
         newPage.on('request', request => {
