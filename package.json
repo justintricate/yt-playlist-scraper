@@ -1,0 +1,32 @@
+{
+  "name": "playlist-scraper",
+  "version": "1.0.0",
+  "description": "takes a youtube playlist URL, gives back each item in the playlist's title and viewcount",
+  "main": "scraper.js",
+  "dependencies": {
+    "puppeteer": "^5.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm node <playlist url>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justintricate/yt-playlist-scraper.git"
+  },
+  "keywords": [
+    "youtube",
+    "scraper",
+    "youtube",
+    "playlist",
+    "view",
+    "count",
+    "scraper"
+  ],
+  "author": "jwooley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justintricate/yt-playlist-scraper/issues"
+  },
+  "homepage": "https://github.com/justintricate/yt-playlist-scraper#readme"
+}
