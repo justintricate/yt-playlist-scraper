@@ -50,7 +50,7 @@ async function scrapePage(url) {
                 } else
                     request.continue();
             })
-            // end of block stuff
+            
         const start = Date.now();
         await newPage.goto(href);;
         await newPage.waitForSelector('.short-view-count.yt-view-count-renderer');
