@@ -12,6 +12,7 @@ async function getElText(page, selector) {
 async function scrapePage(url) {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    const totalStart = Date.now();
 
     await page.goto(url);
     var elements;
@@ -57,11 +58,11 @@ async function scrapePage(url) {
             await newPage.waitForSelector('.short-view-count.yt-view-count-renderer');
             const viewCount = await getElText(newPage, '.view-count.yt-view-count-renderer');
             const titleText = await getElText(newPage, '.title.ytd-video-primary-info-renderer');
-            //const uploadDate = await getElText(newPage, 'ytd-video-primary-info-renderer');
+            const uploadDate = await getElText(newPage, '#date yt-formatted-string.ytd-video-primary-info-renderer');
 
             console.log('Title: ', titleText)
             console.log(viewCount)
-            //console.log(uploadDate)
+            console.log('Upload date: ', uploadDate)
             // console.log('Loaded in', Date.now() - start, 'ms')
             await newPage.close();
         } catch (error) {
@@ -69,6 +70,10 @@ async function scrapePage(url) {
         }
     }
     browser.close();
+    var end = new Date().getTime();
+    var time = end - totalStart;
+    var shortTime = (time/60000).toFixed(3);
+    console.log(len + ' items scraped in ' + time/1000 + " seconds!" + " (" + shortTime + ") minutes.")
 };
 
 scrapePage(process.argv[2]);
