@@ -53,14 +53,20 @@ async function scrapePage(url) {
             
         const start = Date.now();
         await newPage.goto(href);;
-        await newPage.waitForSelector('.short-view-count.yt-view-count-renderer');
-        const viewCount = await getElText(newPage, '.view-count.yt-view-count-renderer');
-        const titleText = await getElText(newPage, '.title.ytd-video-primary-info-renderer');
+        try {
+            await newPage.waitForSelector('.short-view-count.yt-view-count-renderer');
+            const viewCount = await getElText(newPage, '.view-count.yt-view-count-renderer');
+            const titleText = await getElText(newPage, '.title.ytd-video-primary-info-renderer');
+            //const uploadDate = await getElText(newPage, 'ytd-video-primary-info-renderer');
 
-        console.log('Title: ', titleText)
-        console.log('Views: ', viewCount)
-        console.log('Loaded in', Date.now() - start, 'ms')
-        await newPage.close();
+            console.log('Title: ', titleText)
+            console.log(viewCount)
+            //console.log(uploadDate)
+            // console.log('Loaded in', Date.now() - start, 'ms')
+            await newPage.close();
+        } catch (error) {
+            console.log("UNSUCCESSFUL SCRAPE! Video may be private or deleted.")
+        }
     }
     browser.close();
 };

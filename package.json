@@ -1,10 +1,12 @@
 {
   "name": "playlist-scraper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "takes a youtube playlist URL, gives back each item in the playlist's title and viewcount",
   "main": "scraper.js",
   "dependencies": {
-    "puppeteer": "^5.3.1"
+    "node-xlsx": "^0.15.0",
+    "puppeteer": "^5.3.1",
+    "winston": "^3.3.3"
   },
   "devDependencies": {},
   "scripts": {
@@ -17,11 +19,9 @@
   "keywords": [
     "youtube",
     "scraper",
-    "youtube",
     "playlist",
     "view",
-    "count",
-    "scraper"
+    "count"
   ],
   "author": "jwooley",
   "license": "ISC",
